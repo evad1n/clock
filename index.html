@@ -12,10 +12,24 @@
             margin: 0;
             padding: 0;
         }
+
+        #digital {
+            z-index: 1;
+            font-family: 'Orbitron', 'Courier New';
+            font-size: 5em;
+            text-align: center;
+        }
+
+        canvas {
+            z-index: -1;
+            position: absolute;
+            top: 0;
+        }
     </style>
 </head>
 
 <body>
+    <h1 id="digital"></h1>
 
     <audio src="sounds/tick.mp3" preload="auto"></audio>
 

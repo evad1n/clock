@@ -1,4 +1,5 @@
 let tickSound = document.querySelector("audio");
+let digitalTime = document.getElementById("digital");
 
 let secondsRadius, minutesRadius, hoursRadius;
 let prevSecond;
@@ -7,7 +8,7 @@ function setup() {
 	createCanvas(window.innerWidth, window.innerHeight);
 	stroke(255);
 
-	radius = min(width, height) / 3;
+	radius = min(width, height) / 2.5;
 	secondsRadius = radius * 0.73;
 	minutesRadius = radius * 0.7;
 	hoursRadius = radius * 0.5;
@@ -20,6 +21,24 @@ function setup() {
 
 	cx = width / 2;
 	cy = height / 2;
+
+	digitalTime.style.marginTop = `calc(${cy - radius}px - 8vh)`;
+}
+
+function windowResized() {
+	resizeCanvas(windowWidth, windowHeight);
+
+	cx = width / 2;
+	cy = height / 2;
+
+	digitalTime.style.marginTop = `calc(${cy - radius}px - 8vh)`;
+}
+
+// Draw digital time
+function writeTime() {
+	let hr = hour() % 12;
+	digitalTime.innerHTML = `${hr == 0 ? 12 : hr}:${('0' + minute()).slice(-2)} ${hour() > 12 ? 'PM' : 'AM'} `;
+
 }
 
 function draw() {
@@ -31,15 +50,7 @@ function draw() {
 
 	background(230);
 
-	// Draw digital time
-	let hr = hour() % 12;
-	let digiTime = `${hr == 0 ? 12 : hr}:${('0' + minute()).slice(-2)} ${hour() > 12 ? 'PM' : 'AM'} `;
-	textSize(32);
-	fill(20);
-	stroke(230);
-	textFont('Orbitron');
-	textAlign(CENTER, CENTER);
-	text(digiTime, width / 2, 100);
+	writeTime();
 
 	// Draw the clock background
 	noStroke();
