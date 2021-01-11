@@ -32,7 +32,8 @@ function draw() {
 	background(230);
 
 	// Draw digital time
-	let digiTime = `${hour() % 12}:${('0' + minute()).slice(-2)} ${hour() > 12 ? 'PM' : 'AM'} `;
+	let hr = hour() % 12;
+	let digiTime = `${hr == 0 ? 12 : hr}:${('0' + minute()).slice(-2)} ${hour() > 12 ? 'PM' : 'AM'} `;
 	textSize(32);
 	fill(20);
 	stroke(230);
