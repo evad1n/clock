@@ -69,6 +69,7 @@ function draw() {
 	textSize(20);
 	fill(0);
 	strokeWeight(1);
+	textAlign(CENTER, CENTER);
 	for (let n = 1; n < 13; n++) {
 		let angle = radians((n * 30) - 90);
 		let x = cx + cos(angle) * numsRadius;
